@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="zxx">
+
+<%-include('common/header')%>
+<body class="background-color-white">
+
+    <header class="header">
+        <%-include('common/topnav')%>
+        
+        <%-include('common/nav')%>
+        </header>
+
+
+<section id="Contact_us">
+<div id="map" style="width: 100%;
+         height: 100vh"></div>
+</section>
+
+
+<section id="Get-in-Touch">
+<div class="container text-center position-absolute">
+<div class="Get-in-Touch-box">
+<h3 class="text-left">Get in Touch</h3>
+<div class="vertical-space-5"></div>
+<p class="text-left">Lorem ipsum tempus amet conubia adipiscing fermentum viverra gravida sodales luctus nulla</p>
+<div class="vertical-space-40"></div>
+<form>
+<div class="row">
+<div class=" col-lg-6 col-md-12">
+<div class="form-group">
+<input type="text" class="form-control" placeholder="Full name" required />
+<span class="fa fa-user icone "></span>
+</div>
+</div>
+<div class=" col-lg-6 col-md-12">
+<div class="form-group">
+<input type="text" class="form-control" placeholder="Subject" required />
+<span class="fa fa-file icone "></span>
+</div>
+</div>
+<div class=" col-lg-6 col-md-12">
+<div class="form-group">
+<input type="email" class="form-control" placeholder="Email address" required />
+<span class="fa fa-envelope icone "></span>
+</div>
+</div>
+<div class=" col-lg-6 col-md-12">
+<div class="form-group">
+<input type="tel" class="form-control" placeholder="Phone number" required />
+<span class="fa fa-phone icone "></span>
+</div>
+</div>
+<div class=" col-lg-12 col-md-12">
+<div class="form-group">
+<textarea class="form-control" placeholder="Messege" rows="3" required></textarea>
+</div>
+</div>
+</div>
+<button type="submit" class="Send">Send</button>
+<button type="reset" class="button button-rounded  close">&times;</button>
+</form>
+</div>
+</div>
+</section>
+
+
+<%-include('common/footer')%>
+
+
+<script data-cfasync="false" src="js/email-decode.min.js"></script><script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="owlcarousel/owl.carousel.min.js"></script>
+<script src="js/jquery-ui.min.js"></script>
+
+<script src="js/custom.js"></script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?callback=initMap">
+    </script>
+</body>
+
+</html>

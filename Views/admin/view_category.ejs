@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+</head>
+<%-include('common/header')%>
+
+    <body>
+        <div class="wrapper d-flex align-items-stretch">
+
+            <%-include('common/sidebar')%>
+                <!-- Page Content  -->
+                <div id="content" class="p-4 p-md-5 pt-5">
+                    <h2 class="mb-4">View Category</h2>
+                    <%if(message.length>0){%>
+                        <div class="alert alert-success" role="alert">
+                            <%=message%>
+                        </div>
+                        <%}%>
+                            <table id="example" class="table table-bordered display table-sm" width="50%">
+                                <thead>
+                                    <tr>
+                                        <th>Sl no</th>
+                                        <th>Name</th>
+                                        <th>Image</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+>                                <tbody>
+                                    <%console.log(categoryData)%>
+                                    <% let i=1  %>
+                                    <%if(categoryData.length>0) {%>
+                                       <% for(let result of categoryData) { %>
+                                        <tr>
+                                            <td><%=i++%></td>
+                                            <td><%=result.name%></td>
+                                            <td><img src="<%=result.image%>" alt="image" width="50px" height="50px"></td>
+                                            <% if(result.status) {%>
+                                                <td><a href="/admin/deactive_category/<%=result._id%>" class="btn btn-danger">Deactive</a></td>
+                                            <%} else {%>
+                                                <td><a href="/admin/active_category/<%=result._id%>" class="btn btn-success">Active</a></td>
+                                            <%}%>
+                                           
+                                        </tr>
+                                    <%}} else {%>
+                                        <h1>Data Not found</h1>
+                                    <%}%>
+                                </tbody
+                            </table>
+                </div>
+        </div>
+
+        <script src="/admin/js/jquery.min.js"></script>
+        <script src="/admin/js/popper.js"></script>
+        <script src="/admin/js/bootstrap.min.js"></script>
+        <script src="/admin/js/main.js"></script>
+        <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+        <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+            crossorigin="anonymous"></script> -->
+        <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
+    </body>
+    </body>
+
+</html>
+<script>
+
+    // $(document).ready(function () {
+    //     var dataTable = $('#example').DataTable({
+    //         'processing': true,
+    //         'serverSide': true,
+    //         'serverMethod': 'get',
+    //         'ajax': {
+    //             "dataType": "json",
+    //             "type": "GET",
+    //             'url': '/admin/fetch_category',
+    //             "dataSrc": ""
+    //         },
+    //         // 'aaSorting': [],
+    //         'columns': [
+    //             { data: '_id' },
+    //             { data: 'name' },
+    //             { data: 'image' },
+    //             { data: 'status' }
+    //         ]
+    //     });
+    //     console.log(data);
+    // })
+
+
+</script>
