@@ -51,7 +51,7 @@ exports.register_create = (req, res) => {
         password: bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10)),
         cpassword: req.body.cpassword,
         company: req.body.company,
-        image: req.file.filename,
+        image: req.file.path,
     })
     Employer.save()
         .then(emp => {
@@ -74,8 +74,8 @@ exports.register_create = (req, res) => {
                         secure: false,
                         requireTLS: true,
                         auth: {
-                            user: "sahananaser94@gmail.com",
-                            pass: "gtavpzuvfvfnkzzc"
+                            user: "souvikchandra9@gmail.com",
+                            pass: "cmgfpgycmjppsjaa"
                         }
                         
                     })
