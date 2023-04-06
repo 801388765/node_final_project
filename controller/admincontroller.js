@@ -61,9 +61,21 @@ exports.dashboard = (req, res) => {
 }
 
 
-exports.user = (req, res) => {
+/*exports.user = (req, res) => {
     res.render("./admin/user", {
         title: "user page"
+    })
+}*/
+
+exports.user = (req, res) => {
+    User.find({role:0}).then(result => {
+        res.render("./admin/user", {
+            title: "Admin | Users",
+            data: req.admin,
+            displayData: result
+        })
+    }).catch(err => {
+        console.log(err);
     })
 }
 
