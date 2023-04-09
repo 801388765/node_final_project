@@ -9,6 +9,7 @@ route.get("/",controller.home)
 route.get("/about",controller.about)
 route.get("/contact",controller.contact)
 route.get("/joblist",controller.joblist)
+route.get("/joblist_view",controller.job_post_details)
 route.get("/jobdetails",controller.jobdetails)
 route.get("/post_job",controller.post_job)
 

@@ -7,15 +7,63 @@ const tokenModel = require('../model/TokenModel')
 const crypto = require('crypto')
 const Category = require("../model/categoryModel")
 const Employer = require("../model/EmployerModel")
+const JobPost = require("../model/JobModel")
+const mongoose=require('mongoose')
 
 exports.home = (req, res) => {
-    Category.find({
-        status: true
-    }).then(categoryDetails => {
-        res.render("home", {
-            title: "home page",
-            data: req.user,
-            categoryData: categoryDetails
+    const categoryResult =  Category.aggregate([
+        {   $match: {status: {$ne: false}}},
+        {
+            $lookup: {
+                from: "job_posts",
+                localField: "_id",
+                foreignField: "category",
+                as: "jobpost_docs"
+            }
+        }, 
+        {
+            $match: { 
+               
+                "jobpost_docs.status": {$ne: false} 
+            }
+        },
+        {   
+            
+            $addFields: { job_size: { $size: "$jobpost_docs" } } 
+        },
+        {
+            $sort: {job_size: -1}
+        }
+    ])
+    categoryResult.then(categoryDetails => {
+        const result = Category.aggregate([
+            {
+                $lookup: {
+                    from: "job_posts",
+                    localField: "_id",
+                    foreignField: "category",
+                    as: "jobpost_docs"
+                }
+            },
+            {
+                $match: {
+                    jobpost_docs: { $ne: [] },
+                    status: { $ne: false},
+                    "jobpost_docs.status": {$ne: false}
+                }
+            }
+        ])
+        result.then(job_details_data => {
+            res.render("home", {
+                title: "Home page",
+                job_details_data: job_details_data,
+                categoryData: categoryDetails,
+                sessionData: req.user || req.employer || {}
+            })
+            // console.log(job_details_data);
+        }).catch(err => {
+            console.log(err);
+            res.redirect("/")
         })
     })
 }
@@ -25,49 +73,117 @@ exports.about = (req, res) => {
         .then(employerdetails => {
             res.render("about", {
                 title: "about page",
-                data:req.user,
-                employerdata: employerdetails
+                loginData:req.user,
+                employerdata: employerdetails,
+                sessionData: req.user || req.employer || {}
             })
         })
     }
 
 exports.contact = (req, res) => {
                 res.render("contact", {
-                    title: "contact page"
+                    title: "contact page",
+                    sessionData: req.user || req.employer || {}
                 })
-            }
+}
 
 exports.joblist = (req, res) => {
-                Category.find({
-                    status: true
-                }).then(categoryDetails => {
-                    res.render("job", {
-                        title: "job page",
-                        categoryData: categoryDetails
-                    })
-                })
+    Category.find({
+        status: true
+    }).then(categoryDetails => {
+        const result = Category.aggregate([
+            {
+                $lookup: {
+                    from: "job_posts",
+                    localField: "_id",
+                    foreignField: "category",
+                    as: "jobpost_docs"
+                }
+            },
+            {
+                $match: {
+                    jobpost_docs: { $ne: [] },
+                    status: { $ne: false},
+                    "jobpost_docs.status": {$ne: false}
+                }
             }
+        ])
+        result.then(job_details_data => {
+            res.render("job", {
+                title: "Job List page",
+                job_details_data: job_details_data,
+                categoryData: categoryDetails,
+                sessionData: req.user || req.employer || {}
+            })
+            // console.log(job_details_data);
+        }).catch(err => {
+                console.log(err);
+                res.redirect("/")
+            })
+    }).catch(error=>{
+        console.log(error)
+        res.redirect("/")
+    })
+    
+}
+
+exports.job_post_details = (req, res) => {
+    Category.find({
+        status: true
+    }).then(categoryDetails => {
+        const result = Category.aggregate([
+        {
+            $lookup: {
+                from: "job_posts",
+                localField: "_id",
+                foreignField: "category",
+                as: "jobpost_docs"
+            }
+        },
+        {
+            $match: {
+                _id: mongoose.Types.ObjectId(req.query.selectpicker)
+            }
+        }
+        ])
+        result.then(job_details_data => {
+        res.render("job", {
+            title: "Job List page",
+            job_details_data: job_details_data,
+            categoryData: categoryDetails,
+            sessionData: req.user || req.employer || {}
+        })
+        }).catch(err => {
+            console.log(err);
+            res.redirect("/")
+        })
+    }).catch(error=>{
+        console.log(error)
+        res.redirect("/")
+    })
+
+}
+
 
 exports.jobdetails = (req, res) => {
-                res.render("jobdetails", {
-                    title: "jobdetails page"
-                })
-            }
+    res.render("jobdetails", {
+        title: "jobdetails page",
+        sessionData: req.user || req.employer || {}
+    })
+}
 
-    exports.post_job = (req, res) => {
-                res.render("post_job", {
-                    title: "job_post_page",
+exports.post_job = (req, res) => {
+    res.render("post_job", {
+        title: "job_post_page",
 
-                })
-            }
-/*exports.post_job = (req, res) => {
-    res.send("<h1> You Can not Access this page you are a user </h1>")
-}*/
+    })
+}
+
 
 exports.register = (req, res) => {
                 res.render("register", {
                     title: "register page",
-                    data: req.user,
+                    sessionData: req.user || {},
                     message: req.flash("message"),
                     error: req.flash("error")
                 })
@@ -176,7 +292,8 @@ exports.login = (req, res) => {
                     title: "loginpage",
                     message: req.flash("message"),
                     error: req.flash("error"),
-                    data: loginData
+                    data: loginData,
+                    sessionData:req.user || {}
                 })
             }
 
@@ -215,7 +332,7 @@ exports.dashboard = (req, res) => {
                         .then(userDetails => {
                             if (userDetails) {
                                 res.render('dashboard', {
-                                    data: req.user,
+                                    sessionData: req.user,
                                     details: userDetails,
                                     //docs:User.find()            
                                 })

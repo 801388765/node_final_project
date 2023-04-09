@@ -38,6 +38,10 @@ dotenv.config()
 // for image upload
 app.use('/admin/public/upload',express.static(path.join(__dirname,'public/upload')));
 
+// for image path
+app.use('/public/upload',express.static(path.join(__dirname,'public/upload')));
+
+app.use('/emp/public/upload',express.static(path.join(__dirname,'public/upload')));
 
 //user route
 const route = require("./route/user")

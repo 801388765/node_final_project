@@ -13,6 +13,10 @@ const PostSchema = new Schema({
         type: String,
         require: true,
     },
+    cmp_address: {
+        type: String,
+        require: true
+    },
     cmplogo: {
         type: String,
         require: true

@@ -40,13 +40,16 @@ route.post('/reg/create',  upload.single('image'), employerController.register_c
 route.get('/log',employerController.login)
 route.post('/log/create',employerController.login_create)
 route.get("/post_job",utils.employerauth,employerController.post_job)
+route.get("/dashboard",utils.employerauth,employerController.dashboard)
 route.get('/logout',employerController.logout)
 route.get("/econfirmation/:email/:etoken",employerController.econfirmation);
 //route.post('/jobpost',upload.single('image'),employerController.register)
 
-
-
-
+route.get('/home',employerController.home)
+route.get('/joblist',employerController.joblist)
+route.get("/joblist_view",employerController.job_post_details)
+// route.get('/about',employerController.register)
+// route.get('/contact',employerController.register)
 
 
 

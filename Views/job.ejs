@@ -32,13 +32,13 @@
 
         <div id="search-box" class="margin-none">
             <div class="container search-box">
-                <form action="#" id="search-box_search_form_3"
+                <form action="/joblist_view" id="search-box_search_form_3"
                     class="search-box_search_form d-flex flex-lg-row flex-column align-items-center justify-content-between ">
                     <div class="d-flex flex-row align-items-center justify-content-start inline-block">
                         <span class="large material-icons search">search</span>
-                        <input class="search-box_search_input" placeholder="Search Keyword" required="required"
+                        <input class="search-box_search_input" placeholder="Search Keyword" 
                             type="search">
-                        <select class="dropdown_item_select search-box_search_input">
+                        <select class="dropdown_item_select search-box_search_input" name="selectpicker">
                             <option>Category</option>
                             <% for(let result of categoryData) {%>
                                 <option value="<%=result._id%>">
@@ -109,189 +109,35 @@
                     </div> -->
                     </div>
                     <div class="col-lg-8 col-md-12">
-                        <div class="detail width-100 ">
-                            <div class="media display-inline text-align-center">
-                                <img src="imags/job-post-icone-1.png" alt="John Doe" class="mr-3 ">
-                                <div class="media-body text-left  text-align-center">
-                                    <h6><a href="/jobdetails" class="font-color-black">Jopitar looking for a senior UX
-                                            Designer</a>
-                                    </h6>
-                                    <i class="large material-icons">account_balance</i>
-                                    <span class="text">Jopitar inc.</span>
-                                    <br />
-                                    <i class="large material-icons">place</i>
-                                    <span class="text font-size">11907 Doyle Cape Cydneyview</span>
-                                    <div class="float-right margin-top text-align-center">
-                                        <a href="#" class="part-full-time">Part Tiatton</a>
-                                        <p class="date-time">Deadline: May 23, 2018</p>
+                        <%if(job_details_data.length >0) {%>
+                            
+                            <%for(let data of job_details_data) {%>
+                            <% for(let result of data.jobpost_docs) {%>
+                                
+                                <div class="detail width-100 ">
+                                    <div class="media display-inline text-align-center">
+                                        <img src="<%=result.cmplogo%>" alt="Image" class="mr-3 ">
+                                        <div class="media-body text-left  text-align-center">
+                                            <h6><a href="/jobdetails" class="font-color-black"><%=result.title%></a>
+                                            </h6>
+                                            <i class="large material-icons">account_balance</i>
+                                            <span class="text"><%=result.cmp%></span>
+                                            <br />
+                                            <i class="large material-icons">place</i>
+                                            <span class="text font-size"><%=result.cmp_address%></span>
+                                            <div class="float-right margin-top text-align-center">
+                                                <a href="#" class="part-full-time">Apply Now</a>
+                                                <p class="date-time"><%=result.short%></p>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="detail width-100">
-                            <div class="media display-inline text-align-center">
-                                <img src="imags/job-post-icone-2.png" alt="John Doe" class="mr-3 ">
-                                <div class="media-body text-left text-align-center">
-                                    <h6><a href="/jobdetails" class="font-color-black">Rokital needs Marketing
-                                            Experts</a></h6>
-                                    <i class="large material-icons">account_balance</i>
-                                    <span class="text">Rokitar ltd.</span>
-                                    <br />
-                                    <i class="large material-icons">place</i>
-                                    <span class="text font-size">11907 Doyle Cape Cydneyview</span>
-                                    <div class="float-right margin-top text-align-center">
-                                        <a href="#" class="part-full-time">Full Time</a>
-                                        <p class="date-time">Deadline: May 23, 2018</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="detail width-100">
-                            <div class="media display-inline text-align-center">
-                                <img src="imags/job-post-icone-3.png" alt="John Doe" class="mr-3 ">
-                                <div class="media-body text-left text-align-center">
-                                    <h6><a href="/jobdetails" class="font-color-black">Mshape looking for a senior UX
-                                            Designer</a>
-                                    </h6>
-                                    <i class="large material-icons">account_balance</i>
-                                    <span class="text">Mshape inc.</span>
-                                    <br />
-                                    <i class="large material-icons">place</i>
-                                    <span class="text font-size">11907 Doyle Cape Cydneyview</span>
-                                    <div class="float-right margin-top text-align-center">
-                                        <a href="#" class="part-full-time">Full Time</a>
-                                        <p class="date-time">Deadline: May 23, 2018</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="detail width-100">
-                            <div class="media display-inline text-align-center">
-                                <img src="imags/job-post-icone-4.png" alt="John Doe" class="mr-3 ">
-                                <div class="media-body text-left text-align-center">
-                                    <h6><a href="/jobdetails" class="font-color-black">Marketing Directer needed </a>
-                                    </h6>
-                                    <i class="large material-icons">account_balance</i>
-                                    <span class="text">Scalegoss ltd.</span>
-                                    <br />
-                                    <i class="large material-icons">place</i>
-                                    <span class="text font-size">11907 Doyle Cape Cydneyview</span>
-                                    <div class="float-right margin-top text-align-center">
-                                        <a href="#" class="part-full-time">Part Time</a>
-                                        <p class="date-time">Deadline: May 23, 2018</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="detail width-100">
-                            <div class="media display-inline text-align-center">
-                                <img src="imags/job-post-icone-5.png" alt="John Doe" class="mr-3 ">
-                                <div class="media-body text-left text-align-center">
-                                    <h6><a href="/jobdetails" class="font-color-black">We need a senior Brand
-                                            Designer</a></h6>
-                                    <i class="large material-icons">account_balance</i>
-                                    <span class="text">Supwin inc.</span>
-                                    <br />
-                                    <i class="large material-icons">place</i>
-                                    <span class="text font-size">11907 Doyle Cape Cydneyview</span>
-                                    <div class="float-right margin-top text-align-center">
-                                        <a href="#" class="part-full-time">Freelance</a>
-                                        <p class="date-time">Deadline: May 23, 2018</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="detail width-100">
-                            <div class="media display-inline text-align-center">
-                                <img src="imags/job-post-icone-1.png" alt="John Doe" class="mr-3 ">
-                                <div class="media-body text-left  text-align-center">
-                                    <h6><a href="/jobdetails" class="font-color-black">Jopitar looking for a senior UX
-                                            Designer</a>
-                                    </h6>
-                                    <i class="large material-icons">account_balance</i>
-                                    <span class="text">Jopitar inc.</span>
-                                    <br />
-                                    <i class="large material-icons">place</i>
-                                    <span class="text font-size">11907 Doyle Cape Cydneyview</span>
-                                    <div class="float-right margin-top text-align-center">
-                                        <a href="#" class="part-full-time">Part Time</a>
-                                        <p class="date-time">Deadline: May 23, 2018</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="detail width-100">
-                            <div class="media display-inline text-align-center">
-                                <img src="imags/job-post-icone-2.png" alt="John Doe" class="mr-3 ">
-                                <div class="media-body text-left text-align-center">
-                                    <h6><a href="/jobdetails" class="font-color-black">Rokital needs Marketing
-                                            Experts</a></h6>
-                                    <i class="large material-icons">account_balance</i>
-                                    <span class="text">Rokitar ltd.</span>
-                                    <br />
-                                    <i class="large material-icons">place</i>
-                                    <span class="text font-size">11907 Doyle Cape Cydneyview</span>
-                                    <div class="float-right margin-top text-align-center">
-                                        <a href="#" class="part-full-time">Full Time</a>
-                                        <p class="date-time">Deadline: May 23, 2018</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="detail width-100">
-                            <div class="media display-inline text-align-center">
-                                <img src="imags/job-post-icone-3.png" alt="John Doe" class="mr-3 ">
-                                <div class="media-body text-left text-align-center">
-                                    <h6><a href="/jobdetails" class="font-color-black">Mshape looking for a senior UX
-                                            Designer</a>
-                                    </h6>
-                                    <i class="large material-icons">account_balance</i>
-                                    <span class="text">Mshape inc.</span>
-                                    <br />
-                                    <i class="large material-icons">place</i>
-                                    <span class="text font-size">11907 Doyle Cape Cydneyview</span>
-                                    <div class="float-right margin-top text-align-center">
-                                        <a href="#" class="part-full-time">Full Time</a>
-                                        <p class="date-time">Deadline: May 23, 2018</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="detail width-100">
-                            <div class="media display-inline text-align-center">
-                                <img src="imags/job-post-icone-4.png" alt="John Doe" class="mr-3 ">
-                                <div class="media-body text-left text-align-center">
-                                    <h6><a href="/jobdetails" class="font-color-black">Marketing Directer needed</a>
-                                    </h6>
-                                    <i class="large material-icons">account_balance</i>
-                                    <span class="text">Scalegoss ltd.</span>
-                                    <br />
-                                    <i class="large material-icons">place</i>
-                                    <span class="text font-size">11907 Doyle Cape Cydneyview</span>
-                                    <div class="float-right margin-top text-align-center">
-                                        <a href="#" class="part-full-time">Part Time</a>
-                                        <p class="date-time">Deadline: May 23, 2018</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="detail width-100">
-                            <div class="media display-inline text-align-center">
-                                <img src="imags/job-post-icone-5.png" alt="John Doe" class="mr-3 ">
-                                <div class="media-body text-left text-align-center">
-                                    <h6><a href="#" class="font-color-black">We need a senior Brand Designer</a></h6>
-                                    <i class="large material-icons">account_balance</i>
-                                    <span class="text">Supwin inc.</span>
-                                    <br />
-                                    <i class="large material-icons">place</i>
-                                    <span class="text font-size">11907 Doyle Cape Cydneyview</span>
-                                    <div class="float-right margin-top text-align-center">
-                                        <a href="#" class="part-full-time">Freelance</a>
-                                        <p class="date-time">Deadline: May 23, 2018</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                            <%}}%>
+                        <%}%>
+                        
+                        
+
+                        
                         <div class="vertical-space-20"></div>
                         <div class="vertical-space-25"></div>
                         <div class="job-list width-100">

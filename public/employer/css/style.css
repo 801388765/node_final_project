@@ -313,7 +313,7 @@ a {
 }
 
 a:hover {
-    color: #f26522;
+    color: #1248bb;
     text-decoration: none;
     transition: all .5s ease 0s
 }
@@ -506,7 +506,8 @@ button:focus {
 }
 
 .header_container {
-    width: 100%
+    width: 100%;
+   
 }
 
 .header_content {
@@ -624,7 +625,7 @@ button:focus {
 
 .header_container .Post-Jobs:hover a {
     cursor: pointer;
-    color: #f26522;
+    color: #14bdee;
     text-decoration: none;
     transition: .3s
 }
@@ -1108,7 +1109,7 @@ button:focus {
 #intro .play {
     width: 60px;
     height: 60px;
-    color: #f26522;
+    color: #0a8196;
     background-color: #fff;
     border-radius: 50%;
     line-height: 60px
@@ -1190,7 +1191,7 @@ button.close {
 }
 
 #search-box .search-box_search_input {
-    width: 33.33333333%;
+    width: 70%;
     border: none;
     outline: none;
     height: 25px;
@@ -1232,7 +1233,7 @@ button.close {
 #search-box .search-box_search_button {
     width: 186px;
     height: 57px;
-    background: #f26522;
+    background: #0a8196;
     border: none;
     outline: none;
     border-radius: 5px;
@@ -1788,8 +1789,8 @@ html .ui-button.ui-state-disabled:active {
 #resent-job-post .detail .part-full-time {
     width: 148px;
     height: 38px;
-    border: 1px solid #f8b5a7;
-    color: #f26c4f;
+    border: 1px solid #0a8196;
+    color: #0a8196;
     font-size: 16px;
     font-family: proxima nova rg;
     cursor: pointer;
@@ -1807,7 +1808,7 @@ html .ui-button.ui-state-disabled:active {
 #resent-job-post .detail .part-full-time:hover {
     border: 1px solid #fff;
     color: #fff;
-    background-color: #f26c4f;
+    background-color: #0a8196;
     transition: all .5s ease 0s
 }
 
@@ -1839,7 +1840,7 @@ html .ui-button.ui-state-disabled:active {
     border-radius: 5px;
     border: 1px solid;
     color: #fff;
-    background-color: #f26522;
+    background-color: #0a8196;
     text-align: center;
     line-height: 2.8;
     display: block
@@ -1847,12 +1848,12 @@ html .ui-button.ui-state-disabled:active {
 
 #resent-job-post .job-list .Open-Jobs-Page:hover {
     border: 1px solid;
-    color: #f26522;
+    color: #0a8196;
     background-color: transparent
 }
 
 #resent-job-post .job-list .Open-Jobs-Page:hover {
-    color: #f26522
+    color: #0a8196
 }
 
 #resent-job-post .job-list .Open-Jobs-Page i {
@@ -1912,9 +1913,9 @@ html .ui-button.ui-state-disabled:active {
     text-align: center;
     position: absolute;
     left: 35px;
-    background-color: rgba(242, 101, 34, 0.93);
+    background-color: #0a8196;
     color: #fff;
-    border: 1px solid #f26522;
+    border: 1px solid #0a8196;
     margin-top: 1.3px
 }
 
@@ -4771,4 +4772,14 @@ html .ui-button.ui-state-disabled:active {
     overflow: scroll;
     width:100%;
     padding-right: 0 !important;
+}
+
+
+.row_image {
+   display: flex;
+}
+
+.column_image {
+   flex: 33.33%;
+   margin:10px;
 }

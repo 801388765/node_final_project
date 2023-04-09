@@ -29,16 +29,24 @@
                                         <li><a href="/">Home variation 2</a></li>
                                     </ul>
                                 </li> -->
-                                <li><a href="/">Home</a></li>
-                                <li><a href="/joblist">Job</a></li>
-                                <li><a href="/about">About</a></li>
-                                <li><a href="/contact">Contact</a></li>
-                                <li><a href="/dashboard">Dashboard</a></li>
                                 
+                                <li><a href="/emp/home">Home</a></li>
+                                <li><a href="/emp/joblist">Job</a></li>
+                                <li><a href="/emp/about">About</a></li>
+                                <li><a href="/emp/contact">Contact</a></li>
+                               
+                                <%console.log(Object.keys(sessionData).length)%>
+                                <% if(Object.keys(sessionData).length > 0){%>
+
+                                    <li><a href="/emp/post_job">Post Job</a></li>
+                                    <li><a href="/emp/dashboard">Profile</a></li>
+                                    <li><a href="/emp/logout">Logout</a></li>
+                                <%} %>
                                 <!-- <li><a href="/register">Register</a></li> -->
                                 <!-- <li><a href="/login">Login</a></li> -->
                                
                             </ul>
+                            <% if(Object.keys(sessionData).length == 0){%>
                             <div class="Post-Jobs">
                                 <a class="" data-toggle="modal" data-target="#registerModal">
                                     Register
@@ -54,6 +62,9 @@
                                     Post Jobs
                                 </a>
                             </div>
+                            <%} %>
+                            
+                            
 
                             <div class="hamburger menu_mm menu-vertical">
                                 <i class="large material-icons font-color-white menu_mm menu-vertical">menu</i>

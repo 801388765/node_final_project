@@ -19,10 +19,8 @@
                 <div class="carousel-container">
                     <div class="carousel-content">
                         <h2 class="font-color-white">Find Jobs Now more Easy Way</h2>
-                        <p class="font-color-white">Lorem ipsum tempus amet conubia adipiscing fermentum viverra
-                            gravida,
-                            mollis suspendisse pretium dictumst inceptos mattis euismod lorem nulla, magna duis nostra
-                            sodales luctus nulla praesent fermentum a elit mollis purus aenean curabitur eleifend </p>
+                        <p class="font-color-white">With Job Portal App, you can search millions of jobs online to find the next step in your career. 
+                            With tools for job search, category wise job search and more, ... </p>
                         <a href="#" data-toggle="modal" data-target="#myModal"><i
                                 class=" material-icons play">play_arrow</i></a>
                     </div>
@@ -63,11 +61,14 @@
 
         <section id="Job-Category">
             <div class="container">
+                
+                <div class="vertical-space-30"></div>
+                <div class="vertical-space-30"></div>
                 <h3 class="text-center">Choose Job Category</h3>
                 <div class="vertical-space-30"></div>
-                <p class="max-width">Lorem ipsum tempus amet conubia adipiscing fermentum viverra gravida, mollis
-                    suspendisse pretium dictumst inceptos mattis euismod
-                </p>
+                <h5 class="max-width">
+                    Popular categories of Job Portal App
+                </h5>
                 <div class="vertical-space-60"> </div>
                 <div class="row">
                     <%if(categoryData.length>0) {%>
@@ -78,8 +79,8 @@
                                     <img src="/<%=result.image%>" alt="">
                                 </div>
                                 <h6><%=result.name%></h6>
-                                <a href="#" class="button job_post" data-hover="View Jobs" data-active="I'M ACTIVE"><span>36 Job
-                                    Posts</span></a>
+                                <a href="/joblist" class="button job_post" data-hover="View Jobs" data-active="I'M ACTIVE"><span>
+                                    <%=result.job_size%> Job Posts</span></a>
                             </div>
                         </div>
                     <%}}%>
@@ -95,98 +96,40 @@
             <div class="container text-center">
                 <h3 class="text-center">Recent Job Post</h3>
                 <div class="vertical-space-30"></div>
-                <p class="max-width">Lorem ipsum tempus amet conubia adipiscing fermentum viverra gravida, mollis
-                    suspendisse pretium dictumst inceptos mattis euismod
-                </p>
+                <h5 class="max-width">Recent job posted by our employer
+                </h5>
                 <div class="vertical-space-60"></div>
-                <div class="detail">
-                    <div class="media display-inline text-align-center">
-                        <img src="imags/job-post-icone-1.png" alt="John Doe" class="mr-3 ">
-                        <div class="media-body text-left  text-align-center">
-                            <h6>Jopitar looking for a senior UX Designer</h6>
-                            <i class="large material-icons">account_balance</i>
-                            <span class="text">Jopitar inc.</span>
-                            <br />
-                            <i class="large material-icons">place</i>
-                            <span class="text font-size">11907 Doyle Cape Cydneyview</span>
-                            <div class="float-right margin-top text-align-center">
-                                <a href="#" class="part-full-time">Part Time</a>
-                                <p class="date-time">Deadline: May 23, 2018</p>
+                <%if(job_details_data.length >0) {%>
+                            
+                    <%for(let data of job_details_data) {%>
+                    <% for(let result of data.jobpost_docs) {%>
+
+                        
+                    <div class="detail">
+                        <div class="media display-inline text-align-center">
+                            <img src="<%=result.cmplogo%>" alt="Image" class="mr-3 ">
+                            <div class="media-body text-left  text-align-center">
+                                <h6><%=result.title%></h6>
+                                <i class="large material-icons">account_balance</i>
+                                <span class="text"><%=result.cmp%></span>
+                                <br />
+                                <i class="large material-icons">place</i>
+                                <span class="text font-size"><%=result.cmp_address%></span>
+                                <div class="float-right margin-top text-align-center">
+                                    <a href="/jobdetails" class="part-full-time">Apply Now</a>
+                                    <p class="date-time"><%=result.short%></p>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="detail">
-                    <div class="media display-inline text-align-center">
-                        <img src="imags/job-post-icone-2.png" alt="John Doe" class="mr-3 ">
-                        <div class="media-body text-left text-align-center">
-                            <h6>Rokital needs Marketing Experts</h6>
-                            <i class="large material-icons">account_balance</i>
-                            <span class="text">Rokitar ltd.</span>
-                            <br />
-                            <i class="large material-icons">place</i>
-                            <span class="text font-size">11907 Doyle Cape Cydneyview</span>
-                            <div class="float-right margin-top text-align-center">
-                                <a href="#" class="part-full-time">Full Time</a>
-                                <p class="date-time">Deadline: May 23, 2018</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="detail">
-                    <div class="media display-inline text-align-center">
-                        <img src="imags/job-post-icone-3.png" alt="John Doe" class="mr-3 ">
-                        <div class="media-body text-left text-align-center">
-                            <h6>Mshape looking for a senior UX Designer</h6>
-                            <i class="large material-icons">account_balance</i>
-                            <span class="text">Mshape inc.</span>
-                            <br />
-                            <i class="large material-icons">place</i>
-                            <span class="text font-size">11907 Doyle Cape Cydneyview</span>
-                            <div class="float-right margin-top text-align-center">
-                                <a href="#" class="part-full-time">Full Time</a>
-                                <p class="date-time">Deadline: May 23, 2018</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="detail">
-                    <div class="media display-inline text-align-center">
-                        <img src="imags/job-post-icone-4.png" alt="John Doe" class="mr-3 ">
-                        <div class="media-body text-left text-align-center">
-                            <h6>Marketing Directer needed</h6>
-                            <i class="large material-icons">account_balance</i>
-                            <span class="text">Scalegoss ltd.</span>
-                            <br />
-                            <i class="large material-icons">place</i>
-                            <span class="text font-size">11907 Doyle Cape Cydneyview</span>
-                            <div class="float-right margin-top text-align-center">
-                                <a href="#" class="part-full-time">Part Time</a>
-                                <p class="date-time">Deadline: May 23, 2018</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="detail">
-                    <div class="media display-inline text-align-center">
-                        <img src="imags/job-post-icone-5.png" alt="John Doe" class="mr-3 ">
-                        <div class="media-body text-left text-align-center">
-                            <h6>We need a senior Brand Designer</h6>
-                            <i class="large material-icons">account_balance</i>
-                            <span class="text">Supwin inc.</span>
-                            <br />
-                            <i class="large material-icons">place</i>
-                            <span class="text font-size">11907 Doyle Cape Cydneyview</span>
-                            <div class="float-right margin-top text-align-center">
-                                <a href="#" class="part-full-time">Freelance</a>
-                                <p class="date-time">Deadline: May 23, 2018</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                    <%}}%>
+                <%}%>
+               
+               
+                
                 <div class="vertical-space-20"></div>
                 <div class="job-list">
-                    <a href="#" class="Open-Jobs-Page margin-auto">Open Jobs Page<i
+                    <a href="/joblist" class="Open-Jobs-Page margin-auto">Open Jobs Page<i
                             class="large material-icons float-right">trending_flat</i></a>
                     <ul class="pagination justify-content-end margin-auto">
                         <li class="page-item"><a class="page-link pdding-none" href="javascript:void(0);"><i
@@ -211,9 +154,8 @@
             <div class="container text-center">
                 <h3 class="text-center">Featuread Company</h3>
                 <div class="vertical-space-30"></div>
-                <p class="max-width">Lorem ipsum tempus amet conubia adipiscing fermentum viverra gravida, mollis
-                    suspendisse pretium dictumst inceptos mattis euismod
-                </p>
+                <h5 class="max-width"> Featured Company of Job Portal App
+                </h5>
                 <div class="row">
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="owl-carousel Featuread-Company-carousel">
@@ -440,8 +382,8 @@
                             </li>
                         </ul>
                         <div class="vertical-space-30"></div>
-                        <a href="#" class="Explore-Employee">Explore Employee</a>
-                        <a href="#" class="Explore-New-Jobs">Explore New Jobs</a>
+                        <a href="/about" class="Explore-Employee">Explore Employee</a>
+                        <a href="/joblist" class="Explore-New-Jobs">Explore New Jobs</a>
                     </div>
                     <div class="col-lg-3 col-md-6">
                         <img src="imags/man.png" alt="" class="man-img">
@@ -452,7 +394,7 @@
         </section>
 
 
-        <section id="Clients-Testimonial">
+        <!-- <section id="Clients-Testimonial">
             <div class="vertical-space-85"></div>
             <div class="container">
                 <h3 class="text-center">Recent Job Post</h3>
@@ -512,7 +454,7 @@
                 </div>
                 <div class="vertical-space-85"></div>
             </div>
-        </section>
+        </section> -->
 
         <%- include('common/footer')%>
 
